@@ -1,3 +1,9 @@
+// logo clicked to go home again
+function homeBack(){
+    window.location.href = "index.html";
+}
+
+
 const loadCategory = async () => {
     const res = await fetch('https://openapi.programming-hero.com/api/videos/categories');
     const data = await res.json();
@@ -16,7 +22,7 @@ function displayCategory(categories) {
         const categoryBtn = document.createElement('div');
         categoryBtn.classList = 'mr-10'
         categoryBtn.innerHTML = `
-        <button onclick='showCategoryDetails("${category.category_id}")' class="tab bg-slate-200 rounded text-lg font-semibold text-slate-500">${category.category}</button>
+        <button id="act-btn" onclick='showCategoryDetails("${category.category_id}")' class="tab bg-slate-200 rounded text-lg font-semibold text-slate-500">${category.category}</button>
         `
         categoryID.appendChild(categoryBtn);
 
@@ -25,22 +31,23 @@ function displayCategory(categories) {
 
 
 // show details of every card 
-async function showCategoryDetails(id = 1000) {
+async function showCategoryDetails(id = 1000, btnID) {
     const res = await fetch(`https://openapi.programming-hero.com/api/videos/category/${id}`);
     const data = await res.json();
     const cardDetails = data.data;
     // console.log(cardDetails.length);
-    if(cardDetails.length > 0){
-        
-    }
-
     const cardContainer = document.getElementById('card-container');
+    const emptyContainer = document.getElementById('empty-data-container');
     cardContainer.textContent = '';
+    emptyContainer.textContent = '';
 
-    cardDetails.forEach(card => {
-        let cardDetail = document.createElement('div');
-        cardDetail.classList = "card card-compact w-11/12 bg-base-100 mx-auto space-y-3 mb-10";
-        cardDetail.innerHTML = `
+    // conditions for data empty or not 
+    if (cardDetails.length > 0) {
+
+        cardDetails.forEach(card => {
+            const cardDetail = document.createElement('div');
+            cardDetail.classList = "card card-compact w-11/12 bg-base-100 mx-auto space-y-3 mb-10";
+            cardDetail.innerHTML = `
         <figure><img src="${card.thumbnail}" class="w-11/12 h-44 rounded-lg" /></figure>
 
         <div class="card-body">
@@ -57,20 +64,28 @@ async function showCategoryDetails(id = 1000) {
             </div>
         </div>
         `
-        cardContainer.appendChild(cardDetail);
-        console.log(card.authors.profile_picture);
-    })
+            cardContainer.appendChild(cardDetail);
+        }
 
+
+        )
+    }
+    else {
+        const cardDetail = document.createElement('div');
+        cardDetail.innerHTML = `<div class="text-center my-32 space-y-5">
+        <img src="images/Icon.png" alt="" class="mx-auto">
+        <h3 class="text-2xl font-bold">Oops!! Sorry, There is no <br> content here</h3>
+        </div>
+        `
+        emptyContainer.appendChild(cardDetail);
+    }
 
 }
 
 
 
 
-
-
-
+// by default calling 
 showCategoryDetails();
-
 
 loadCategory();
