@@ -1,9 +1,8 @@
 // global veriable for further use 
 let specificCategoryDetail;
-let clearCardContainer;
-function globalMaker(cardDetails, cardContainer) {
+
+function globalMaker(cardDetails) {
     specificCategoryDetail = cardDetails;
-    clearCardContainer = cardContainer;
 }
 
 
@@ -49,6 +48,10 @@ async function loadApiID(id = 1000) {
     const data = await res.json();
     const cardDetails = data.data;
     // console.log(cardDetails);
+
+    // make the id data global for further uses
+    globalMaker(cardDetails);
+
     displayCards(cardDetails);
 }
 
@@ -60,10 +63,6 @@ function displayCards(cardDetails){
     const emptyContainer = document.getElementById('empty-data-container');
     cardContainer.textContent = '';
     emptyContainer.textContent = '';
-    
-    
-    // make the id data global for further uses
-    globalMaker(cardDetails, cardContainer);
 
 
     // conditions for data empty or not 
@@ -106,7 +105,7 @@ function displayCards(cardDetails){
     }
 }
 
-// button sorting 
+// button of sorting (onclick button)
 function btnSort() {
     let sorted = specificCategoryDetail.sort((a, b) => parseFloat(b?.others?.views) - parseFloat(a?.others?.views));
     // console.log(sorted);
