@@ -18,15 +18,15 @@
 <body class="container mx-auto">
     <header>
         <!-- navbar  -->
-        <div class="navbar bg-base-100 pt-7 pb-5">
-            <div class="navbar-start">
+        <div class="navbar flex flex-col md:flex-row bg-base-100 pt-7 pb-5 space-y-3 lg:space-y-0">
+            <div class="navbar-start justify-center md:justify-start">
               <img onclick="homeBack()" id="logo-id" src="images/Logo.png" alt="" class="w-40 h-10">
             </div>
             <div class="navbar-center">
-              <a class="btn bg-slate-200 normal-case text-lg">Sort by view</a>
+              <a onclick="btnSort()" id="sort-btn" class="btn bg-slate-200 normal-case text-lg">Sort by view</a>
             </div>
-            <div class="navbar-end">
-             <button class="py-2 px-5 bg-red-500 text-white text-xl font-semibold rounded-xl">
+            <div class="navbar-end justify-center md:justify-end">
+             <button onclick="blogPage()" class="py-2 px-5 bg-red-500 text-white text-xl font-semibold rounded-xl">
                 Blog
              </button>
             </div>
@@ -36,11 +36,11 @@
 
     <main>
         <!-- buttons of category  -->
-            <div class="tabs justify-center py-8" id="category-btn-container">
+            <div class="flex flex-wrap tabs justify-center py-8 mx-auto" id="category-btn-container">
                
               </div>
         <!-- cards of categories  -->
-        <div id="card-container" class="grid grid-cols-4">
+        <div id="card-container" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
             
         </div>
 
@@ -48,8 +48,6 @@
         <div id="empty-data-container">
 
         </div>
-
-        <!-- practice -->
         
     </main>
 
@@ -58,6 +56,7 @@
 
 
     <script src="js/index.js"></script>
+    <!-- <script src="js/index2.js"></script> -->
 </body>
 
 </html>
