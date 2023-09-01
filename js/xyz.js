@@ -1,3 +1,6 @@
-let arr = [1,23,3];
-let x = arr.sort((a,b)=>b-a);
-console.log(x);
+const totalSeconds = 7200; 
+const hours = Math.floor(totalSeconds / 3600);
+const remainingSeconds = totalSeconds % 3600;
+const minutes = Math.floor(remainingSeconds / 60);
+
+console.log(`${totalSeconds} seconds is equal to ${hours} hours and ${minutes} minutes`);

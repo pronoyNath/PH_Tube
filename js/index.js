@@ -4,7 +4,7 @@ let specificCategoryDetail;
 function globalMaker(cardDetails) {
     specificCategoryDetail = cardDetails;
 }
-
+// console.log(specificCategoryDetail);
 
 
 // logo clicked to go home again
@@ -56,8 +56,8 @@ async function loadApiID(id = 1000) {
 }
 
 // separete display all cards function
-function displayCards(cardDetails){
-      
+function displayCards(cardDetails) {
+
     // console.log(cardDetails.length);
     const cardContainer = document.getElementById('card-container');
     const emptyContainer = document.getElementById('empty-data-container');
@@ -69,10 +69,19 @@ function displayCards(cardDetails){
     if (cardDetails.length > 0) {
 
         cardDetails.forEach(card => {
-            const cardDetail = document.createElement('div');
-            cardDetail.classList = "card card-compact w-11/12 bg-base-100 mx-auto space-y-3 mb-10";
-            cardDetail.innerHTML = `
-        <figure><img src="${card.thumbnail}" class="w-11/12 h-44 rounded-lg" /></figure>
+
+        // convert time to min and seconds 
+        let [hr,min] = vdoDuration(card);
+        const cardDetail = document.createElement('div');
+        cardDetail.classList = "card card-compact w-11/12 bg-base-100 mx-autospace-y-3 mb-10";
+        cardDetail.innerHTML = `
+        <div class="relative">
+        <figure><img src="${card.thumbnail}" class="w-11/12 h-44 rounded-lg" />
+        </div>
+        <div class="bg-[#171717] text-white rounded-lg px-2 text-center absolute right-5 top-36">
+           ${card?.others?.posted_date ? `${hr} hr ${min} min ago` : ""}
+        </div>
+        </figure>
 
         <div class="card-body">
     
@@ -103,14 +112,27 @@ function displayCards(cardDetails){
         `
         emptyContainer.appendChild(cardDetail);
     }
+
 }
+
+// video duration
+function vdoDuration(card) {
+    const totalSeconds = card?.others?.posted_date;
+    const hours = Math.floor(totalSeconds / 3600);
+    const remainingSeconds = totalSeconds % 3600;
+    const minutes = Math.floor(remainingSeconds / 60);
+    return [hours,minutes];
+}
+
+
+
 
 // button of sorting (onclick button)
 function btnSort() {
     let sorted = specificCategoryDetail.sort((a, b) => parseFloat(b?.others?.views) - parseFloat(a?.others?.views));
-    // console.log(sorted);
     displayCards(sorted);
 }
+
 
 
 // by default calling 
