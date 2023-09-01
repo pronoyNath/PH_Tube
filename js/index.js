@@ -32,9 +32,9 @@ function displayCategory(categories) {
     categories.forEach(category => {
         // console.log(category);
         const categoryBtn = document.createElement('div');
-        categoryBtn.classList = 'mr-10'
+        categoryBtn.classList = 'mr-5 md:mr-10 mb-3 md:mb-0'
         categoryBtn.innerHTML = `
-        <button id="act-btn" onclick='loadApiID("${category.category_id}")' class="tab bg-slate-200 rounded text-lg font-semibold text-slate-500">${category.category}</button>
+        <button id="act-btn" onclick='loadApiID("${category.category_id}")' class="tab bg-slate-200 rounded text-lg font-semibold text-slate-500 mx-auto">${category.category}</button>
         `
         categoryID.appendChild(categoryBtn);
 
@@ -73,12 +73,12 @@ function displayCards(cardDetails) {
         // convert time to min and seconds 
         let [hr,min] = vdoDuration(card);
         const cardDetail = document.createElement('div');
-        cardDetail.classList = "card card-compact w-11/12 bg-base-100 mx-autospace-y-3 mb-10";
+        cardDetail.classList = "card card-compact w-11/12 bg-base-100 mx-auto space-y-3 mb-10";
         cardDetail.innerHTML = `
         <div class="relative">
         <figure><img src="${card.thumbnail}" class="w-11/12 h-44 rounded-lg" />
         </div>
-        <div class="bg-[#171717] text-white rounded-lg px-2 text-center absolute right-5 top-36">
+        <div class="bg-[#171717] text-white rounded-lg px-2 text-center absolute right-5 top-32 lg:top-34">
            ${card?.others?.posted_date ? `${hr} hr ${min} min ago` : ""}
         </div>
         </figure>
