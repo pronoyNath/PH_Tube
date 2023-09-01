@@ -1,4 +1,3 @@
-// global veriable for further use 
 let specificCategoryDetail;
 let clearCardContainer;
 function globalMaker(cardDetails, cardContainer) {
@@ -16,7 +15,7 @@ function blogPage() {
     window.location.href = "blog.html";
 }
 
-// load data from api 
+
 const loadCategory = async () => {
     const res = await fetch('https://openapi.programming-hero.com/api/videos/categories');
     const data = await res.json();
@@ -35,7 +34,7 @@ function displayCategory(categories) {
         const categoryBtn = document.createElement('div');
         categoryBtn.classList = 'mr-10'
         categoryBtn.innerHTML = `
-        <button id="act-btn" onclick='loadApiID("${category.category_id}")' class="tab bg-slate-200 rounded text-lg font-semibold text-slate-500">${category.category}</button>
+        <button id="act-btn" onclick='showCategoryDetails("${category.category_id}")' class="tab bg-slate-200 rounded text-lg font-semibold text-slate-500">${category.category}</button>
         `
         categoryID.appendChild(categoryBtn);
 
@@ -44,7 +43,7 @@ function displayCategory(categories) {
 
 
 // show details of every card 
-async function loadApiID(id = 1000) {
+async function showCategoryDetails(id = 1000) {
     const res = await fetch(`https://openapi.programming-hero.com/api/videos/category/${id}`);
     const data = await res.json();
     const cardDetails = data.data;
@@ -52,7 +51,7 @@ async function loadApiID(id = 1000) {
     displayCards(cardDetails);
 }
 
-// separete display all cards function
+// new function separete
 function displayCards(cardDetails){
       
     // console.log(cardDetails.length);
@@ -115,6 +114,6 @@ function btnSort() {
 
 
 // by default calling 
-loadApiID();
+showCategoryDetails();
 
 loadCategory();
