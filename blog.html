@@ -31,16 +31,38 @@
 
     <main>
         <!-- questions  -->
-        <ol class="list-decimal px-5 md:px-0 my-7 ml-10 ">
-            <li class="font-bold text-base md:text-xl">Discuss the scope of var, let, and const</li>
-            <p class="text-base md:text-lg mb-4"><span class="underline font-semibold ">Answer:</span> Lorem ipsum dolor sit, amet consectetur adipisicing elit. A, ad!</p>
-
-            <li class="font-bold text-base md:text-xl">Discuss the scope of var, let, and const</li>
-            <p class="text-base md:text-lg mb-4"><span class="underline font-semibold ">Answer:</span> Lorem ipsum dolor sit, amet consectetur adipisicing elit. A, ad!</p>
-
-            <li class="font-bold text-base md:text-xl">Discuss the scope of var, let, and const</li>
-            <p class="text-base md:text-lg mb-4"><span class="underline font-semibold ">Answer:</span> Lorem ipsum dolor sit, amet consectetur adipisicing elit. A, ad!</p>
-        </ol>
+        <div class="px-3 md:px-10 lg:px-0">
+            <ol class="list-decimal  my-7 ml-10 ">
+                <li class="font-bold text-base md:text-xl text-red-400">Discuss the scope of var, let, and const</li>
+                <p class="text-base md:text-lg mb-5"><span class="underline font-bold ">Answer:</span>  let's discuss about 'var', 'let', and 'const' in JavaScript: <br>
+    
+                    <span class="font-bold">var Scope:</span> 
+                    
+                    Variables declared with the var keyword have function-level scope, meaning they are accessible throughout the entire function where they are defined. This scope also includes variables declared inside blocks within that function. An important characteristic of var is hoisting, which means the variable declarations are moved to the top of their containing function or the global scope during code execution. This hoisting behavior can sometimes lead to unexpected issues, as variables can be accessed before they are explicitly declared in the code.
+                    <br>
+                    <span class="font-bold">let Scope:</span> 
+                    
+                    Unlike var, variables declared with let have block-level scope. This means they are confined to the nearest enclosing block, whether it's a loop, a conditional statement, or a function. One significant advantage of let over var is that let declarations are not hoisted, so they are only accessible after they are declared within their block. This block-scoping behavior helps prevent accidental variable redeclarations and improves code clarity.
+                    <br>
+                    <span class="font-bold">const Scope:</span> 
+                    
+                    Similar to let, const also provides block-level scope, limiting its accessibility to the nearest enclosing block. However, the primary purpose of const is to declare constants, which means once a value is assigned to a const variable, it cannot be reassigned. It's important to note that the content of an object declared with const can still be modified, but the variable itself cannot be assigned a new value. Like let, const declarations are not hoisted and follow the block-scoping rules.
+                    
+                    In summary, var has function scope with hoisting, let has block scope without hoisting, and const has block scope and is used for declaring constants that cannot be reassigned. These scope distinctions are crucial for writing predictable and maintainable JavaScript code.</p>
+    
+                <li class="font-bold text-base md:text-xl  text-red-400">Tell us the use cases of null and undefined</li>
+                <p class="text-base md:text-lg mb-5"><span class="underline font-bold ">Answer:</span>  `null` and `undefined` in JavaScript: <br>
+    
+                   <span class="font-bold"> null:</span>  
+                    It is used to explicitly represent the absence of any object value or a deliberate empty value. <br>
+                    <span class="font-bold">undefined:</span>
+                    It typically indicates the absence of an assigned value, often as the default value of uninitialized variables or function parameters.</p>
+    
+                <li class="font-bold text-base md:text-xl  text-red-400">What do you mean by REST API?</li>
+                <p class="text-base md:text-lg mb-5"><span class="underline font-bold ">Answer:</span> REST API stands for Representational State Transfer Application Programming Interface. It's a way to build web services that use standard HTTP methods (GET, POST, PUT, DELETE) to interact with resources (e.g., data objects) identified by unique URLs. REST emphasizes simplicity, statelessness, and multiple data representations (e.g., JSON, XML). It's widely used for building web services and is known for its scalability and ease of use.</p>
+            </ol>
+        </div>
+        
     </main>
 
     <script src="js/blog.js"></script>

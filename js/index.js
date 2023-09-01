@@ -28,16 +28,17 @@ const loadCategory = async () => {
 // show category buttons 
 function displayCategory(categories) {
     const categoryID = document.getElementById('category-btn-container');
-
+    
     categories.forEach(category => {
-        // console.log(category);
+        // console.log(category.category);
+        
         const categoryBtn = document.createElement('div');
         categoryBtn.classList = 'mr-5 md:mr-10 mb-3 md:mb-0'
         categoryBtn.innerHTML = `
-        <button id="act-btn" onclick='loadApiID("${category.category_id}")' class="tab bg-slate-200 rounded text-lg font-semibold text-slate-500 mx-auto">${category.category}</button>
+        <button id="act-btn" onclick='loadApiID("${category.category_id}")' class="tab focus:bg-red-400 focus:text-white bg-slate-200 rounded text-lg font-semibold text-slate-500 mx-auto ">${category.category}</button>
         `
         categoryID.appendChild(categoryBtn);
-
+        
     });
 }
 
@@ -97,7 +98,7 @@ function displayCards(cardDetails) {
             </div>
         </div>
         `
-            cardContainer.appendChild(cardDetail);
+            cardContainer.appendChild(cardDetail); 
         }
 
 
@@ -125,8 +126,6 @@ function vdoDuration(card) {
 }
 
 
-
-
 // button of sorting (onclick button)
 function btnSort() {
     let sorted = specificCategoryDetail.sort((a, b) => parseFloat(b?.others?.views) - parseFloat(a?.others?.views));
@@ -134,8 +133,7 @@ function btnSort() {
 }
 
 
-
 // by default calling 
 loadApiID();
-
 loadCategory();
+
